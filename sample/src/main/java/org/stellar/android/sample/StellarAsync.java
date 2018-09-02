@@ -11,13 +11,11 @@ import org.stellar.sdk.responses.HttpResponseException;
 import java.io.IOException;
 import java.net.URL;
 
-import static org.stellar.android.sample.MainActivity.TAG;
+import static org.stellar.android.sample.MainActivity.*;
 
 public class StellarAsync extends AsyncTask<URL, String, String> {
     @Override
     protected String doInBackground(URL... urls) {
-        String publicKey = "GAZQJ4VPNWBUMAD7MZM3XPO5QUJEEKIJZMXKXNUIX7NBLZVTR5SCUKGI";
-        String secretKey = "SAO6SPWEBUHXKMDOPZ4JZTETXC4H4ZTLJYWXQCGR6WYN2DCDR26LTK3I";
         KeyPair pair = KeyPair.fromSecretSeed(secretKey);
 
         Server server = new Server("https://horizon-testnet.stellar.org");
