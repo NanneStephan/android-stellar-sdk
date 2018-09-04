@@ -139,4 +139,5 @@ public class StellarAsync extends AsyncTask<URL, String, String> {
             }
         });
     }
+    //https://www.stellar.org/developers/guides/get-started/transactions.html
 }
