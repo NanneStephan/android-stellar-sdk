@@ -9,10 +9,8 @@ import org.stellar.sdk.AssetTypeNative;
 import org.stellar.sdk.KeyPair;
 import org.stellar.sdk.Memo;
 import org.stellar.sdk.PaymentOperation;
-import org.stellar.sdk.Server;
 import org.stellar.sdk.Transaction;
 import org.stellar.sdk.requests.EventListener;
-import org.stellar.sdk.requests.PaymentsRequestBuilder;
 import org.stellar.sdk.responses.AccountResponse;
 import org.stellar.sdk.responses.HttpResponseException;
 import org.stellar.sdk.responses.SubmitTransactionResponse;
@@ -24,22 +22,18 @@ import java.net.URL;
 
 import static org.stellar.android.sample.MainActivity.*;
 
-public class StellarAsync extends AsyncTask<URL, String, String> {
+public class StellarAsync extends AsyncTask<URL, String, String>{
 
-    public static KeyPair source = KeyPair.fromSecretSeed("SCZANGBA5YHTNYVVV4C3U252E2B6P6F5T3U6MM63WBSBZATAQI3EBTQ4");
-    public static KeyPair destination = KeyPair.fromAccountId("GA2C5RFPE6GCKMY3US5PAB6UZLKIGSPIUKSLRB6Q723BM2OARMDUYEJ5");
 
     static AccountResponse sourceAccount;
     static Transaction transaction;
     static SubmitTransactionResponse response;
 
-
     @Override
     protected String doInBackground(URL... urls) {
         KeyPair pair = KeyPair.fromSecretSeed(secretKey);
 
-        Server server = new Server("https://horizon-testnet.stellar.org");
-
+        //Server server = new Server("https://horizon-testnet.stellar.org");
         try {
             account = server.accounts().account(pair);
             Log.i(TAG, "Balances for account " + pair.getAccountId());
@@ -77,7 +71,7 @@ public class StellarAsync extends AsyncTask<URL, String, String> {
             e.printStackTrace();
         }
 
-                // Sign the transaction to prove you are actually the person sending it.
+        // Sign the transaction to prove you are actually the person sending it.
         transaction.sign(source);
         // And finally, send it off to Stellar!
 
@@ -95,6 +89,7 @@ public class StellarAsync extends AsyncTask<URL, String, String> {
         if (lastToken != null) {
             paymentsRequest.cursor(lastToken);
         }
+
         // `stream` will send each recorded payment, one by one, then keep the
         // connection open and continue to send you new payments as they occur.
         paymentsRequest.stream(new EventListener<OperationResponse>() {
@@ -139,5 +134,6 @@ public class StellarAsync extends AsyncTask<URL, String, String> {
             }
         });
     }
-    //https://www.stellar.org/developers/guides/get-started/transactions.html
 }
+//https://www.stellar.org/developers/guides/get-started/transactions.html
+

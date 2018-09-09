@@ -4,7 +4,7 @@ package org.stellar.sdk.requests;
 import com.google.gson.reflect.TypeToken;
 import com.here.oksse.ServerSentEvent;
 
-import org.stellar.sdk.responses.AccountResponse;
+import org.stellar.sdk.KeyPair;
 import org.stellar.sdk.responses.Page;
 import org.stellar.sdk.responses.operations.OperationResponse;
 
@@ -29,7 +29,7 @@ public class PaymentsRequestBuilder extends RequestBuilder {
    * @see <a href="https://www.stellar.org/developers/horizon/reference/payments-for-account.html">Payments for Account</a>
    * @param account Account for which to get payments
    */
-  public PaymentsRequestBuilder forAccount(AccountResponse account) {
+  public PaymentsRequestBuilder forAccount(KeyPair account) {
     account = checkNotNull(account, "account cannot be null");
     this.setSegments("accounts", account.getAccountId(), "payments");
     return this;
