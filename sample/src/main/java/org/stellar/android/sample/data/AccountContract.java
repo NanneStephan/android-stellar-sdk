@@ -14,7 +14,7 @@ public class AccountContract {
      * content authority is the package name for the app, which is guaranteed to be unique on the
      * device.
      */
-    public static final String CONTENT_AUTHORITY = "com.example.android.accounts";
+    public static final String CONTENT_AUTHORITY = "org.stellar.android.sample";
 
     /**
      * Use CONTENT_AUTHORITY to create the base of all URI's which apps will use to contact

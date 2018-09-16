@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".CatalogActivity"
+    >
+
+    <item
+        android:id="@+id/action_insert_account_one"
+        android:title="Account One"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/action_insert_account_two"
+        android:title="Account Two"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_insert_account_empty"
+        android:title="Empty Account"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_delete_all_entries"
+        android:title="Delete ALL"
+        app:showAsAction="never" />
+</menu>

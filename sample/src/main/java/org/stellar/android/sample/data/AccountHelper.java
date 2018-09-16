@@ -11,7 +11,7 @@ public class AccountHelper extends SQLiteOpenHelper {
     public static final String LOG_TAG = AccountHelper.class.getSimpleName();
 
     /** Name of the database file */
-    private static final String DATABASE_NAME = "accounts.db";
+    private static final String DATABASE_NAME = "stellarAccounts.db";
 
     /**
      * Database version. If you change the database schema, you must increment the database version.
@@ -25,7 +25,7 @@ public class AccountHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // Create a String that contains the SQL statement to create the pets table
         String SQL_CREATE_ACCOUNTS_TABLE = "CREATE TABLE " + AccountEntry.TABLE_NAME + " ("
-                + AccountEntry._ID + " INTERGER PRIMARY KEY AUTOINCREMENT,  "
+                + AccountEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,  "
                 + AccountEntry.COLUMN_ACCOUNT_NAME + " TEXT NOT NULL, "
                 + AccountEntry.COLUMN_ACCOUNT_SUBUSE + " TEXT, "
                 + AccountEntry.COLUMN_PUBLIC_KEY + " TEXT NOT NULL, "

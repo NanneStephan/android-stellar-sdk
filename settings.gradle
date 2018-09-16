@@ -1,2 +1,2 @@
-include ':android-stellar-sdk', ':sample'
+include ':android-stellar-sdk', ':sample',':app'
 
