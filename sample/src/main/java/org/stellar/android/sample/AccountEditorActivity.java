@@ -1,7 +1,6 @@
 package org.stellar.android.sample;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.LoaderManager;
 import android.content.ContentValues;
 import android.content.CursorLoader;
@@ -18,10 +17,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import org.stellar.sdk.KeyPair;
+
 import org.stellar.android.sample.data.AccountContract.*;
+import org.stellar.android.sample.AccountAsync.*;
+
 
 
 public class AccountEditorActivity extends AppCompatActivity implements
@@ -34,13 +39,16 @@ public class AccountEditorActivity extends AppCompatActivity implements
 
     private Uri mCurrentAccountUri;
 
-    private EditText mPrivateKeyEditText;
+    private TextView mPrivateKeyEditText;
 
-    private EditText mSecretKeyEditText;
+    private TextView mSecretKeyEditText;
 
     private EditText mNameAccountEditText;
 
     private EditText mSubUseEditText;
+
+    public static KeyPair pair;
+
 
 
     private boolean mAccountHasChanged = false;
@@ -59,18 +67,21 @@ public class AccountEditorActivity extends AppCompatActivity implements
         super.onCreate(saveInstance);
         setContentView(R.layout.addkeyaccount);
         // Examine the intent that was used to launch this activity
-
+        final Button addKeypairs = findViewById(R.id.addKeyPairs);
+        final Button addFunds = findViewById(R.id.addFunds);
         Intent intent = getIntent();
         mCurrentAccountUri = intent.getData();
         // If the intent DOES NOT contain a account content URI, then we know that we are
         // creating a new account.
         if (mCurrentAccountUri == null) {
             setTitle("Add Account");
-
+            addKeypairs.setVisibility(View.VISIBLE);
+            addFunds.setVisibility(View.VISIBLE);
             invalidateOptionsMenu();
         } else {
             setTitle("Edit Account");
-
+            addKeypairs.setVisibility(View.INVISIBLE);
+            addFunds.setVisibility(View.INVISIBLE);
             getLoaderManager().initLoader(EXISING_ACCOUNT_LOADER, null, this);
         }
 
@@ -84,6 +95,22 @@ public class AccountEditorActivity extends AppCompatActivity implements
         mSecretKeyEditText.setOnTouchListener(mTouchListener);
         mPrivateKeyEditText.setOnTouchListener(mTouchListener);
 
+        addKeypairs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pair = KeyPair.random();
+                mSecretKeyEditText.setText(new String(pair.getSecretSeed()));
+                mPrivateKeyEditText.setText(new String(pair.getAccountId()));
+                addKeypairs.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        addFunds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AccountAsync().execute();
+            }
+        });
     }
 
     private void saveAccount() {

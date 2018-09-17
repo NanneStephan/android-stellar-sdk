@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,90 +11,148 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <!-- Label -->
         <TextView
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Keys"
-            style="@style/CategoryStyle" />
+            android:textColor="@color/colorAccent" />
 
         <!-- Input fields -->
         <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:paddingLeft="4dp"
-            android:orientation="vertical">
-
-            <!-- Name field -->
-            <EditText
-                android:id="@+id/PrivateKey"
-                android:hint="PrivateKey"
-                android:inputType="text"
-                style="@style/EditorFieldStyle" />
-
-            <!-- Breed field -->
-            <EditText
-                android:id="@+id/secretKey"
-                android:hint="secretKey"
-                android:inputType="text"
-                style="@style/EditorFieldStyle" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- Gender category -->
-    <LinearLayout
-        android:id="@+id/container_Name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- Label -->
-        <TextView
-            android:text="Account name"
-            style="@style/CategoryStyle" />
-
-        <!-- Input field -->
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:orientation="vertical">
-
-            <!-- Gender drop-down spinner -->
-            <EditText
-                android:id="@+id/accountName"
-                android:hint="Name"
-                android:inputType="text"
-                style="@style/EditorFieldStyle" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- Measurement category -->
-    <LinearLayout
-        android:id="@+id/container_measurement"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- Label -->
-        <TextView
-            style="@style/CategoryStyle"
-            android:text="Use case" />
-
-        <!-- Input fields -->
-        <RelativeLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:orientation="vertical"
             android:paddingLeft="4dp">
 
-            <!-- Weight field -->
-            <EditText
-                android:id="@+id/useCase"
+            <!-- Name field -->
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:id="@+id/PrivateKey"
                 style="@style/EditorFieldStyle"
-                android:hint="Use case "
-                android:inputType="text" />
-        </RelativeLayout>
+                android:textSize="15sp"
+                android:drawableTop="@drawable/pk"
+                tools:text="GCKSI5OJ5N5M4WQBRWJAFAJQSCOZF45U4GX6MO4K4I42SJTXDVP7QRRO" />
+
+            <!-- Breed field -->
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:id="@+id/secretKey"
+                style="@style/EditorFieldStyle"
+                android:textSize="15sp"
+                android:drawableTop="@drawable/sk"
+                tools:text="SC6C5ZKYZ6VVVEK3YWXMUSKN6AITCT62GFDJ4IW2FYMLCN5ADT4JYI64" />
+        </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <Button
+        android:layout_weight="1"
+        android:id="@+id/addKeyPairs"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="Genereate KeyPair"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:textColor="@color/backgroundOffWhite"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:layout_weight="1"
+        android:id="@+id/addFunds"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="Add Funds"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:textColor="@color/backgroundOffWhite"
+        android:layout_gravity="center"
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/container_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Label -->
+            <TextView
+                style="@style/CategoryStyle"
+                android:text="Account name" />
+
+            <!-- Input field -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <!-- Gender drop-down spinner -->
+                <EditText
+                    android:id="@+id/accountName"
+                    style="@style/EditorFieldStyle"
+                    android:hint="Name"
+                    android:inputType="text" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Measurement category -->
+        <LinearLayout
+            android:id="@+id/container_measurement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Label -->
+            <TextView
+                style="@style/CategoryStyle"
+                android:text="Use case" />
+
+            <!-- Input fields -->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingLeft="4dp">
+
+                <!-- Weight field -->
+                <EditText
+                    android:id="@+id/useCase"
+                    style="@style/EditorFieldStyle"
+                    android:hint="Use case "
+                    android:inputType="text" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/fundsSucces"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text=""/>
+    <TextView
+        android:id="@+id/showBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text=""/>
 </LinearLayout>

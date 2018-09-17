@@ -1,20 +1,15 @@
 package org.stellar.android.sample;
 
 import android.os.AsyncTask;
-
-
 import org.stellar.sdk.Server;
 import org.stellar.sdk.responses.AccountResponse;
-
 import java.io.*;
+import java.net.MalformedURLException;
 import java.util.*;
-
-
-
 import java.io.IOException;
 import java.net.URL;
 
-import static org.stellar.android.sample.MainActivity.*;
+import static org.stellar.android.sample.AccountEditorActivity.*;
 
 public class AccountAsync extends AsyncTask{
 
@@ -27,6 +22,8 @@ public class AccountAsync extends AsyncTask{
         InputStream response = null;
         try {
             response = new URL(friendbotUrl).openStream();
+        }catch(MalformedURLException e){
+                e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("FAIL You have NO new account :)\n");
