@@ -7,12 +7,17 @@ import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -25,8 +30,6 @@ import android.widget.Toast;
 import org.stellar.sdk.KeyPair;
 
 import org.stellar.android.sample.data.AccountContract.*;
-import org.stellar.android.sample.AccountAsync.*;
-
 
 
 public class AccountEditorActivity extends AppCompatActivity implements
@@ -43,12 +46,22 @@ public class AccountEditorActivity extends AppCompatActivity implements
 
     private TextView mSecretKeyEditText;
 
+
+    TextView fundsSuccessTextView;
+
+    static TextView showBalanceTextView;
+
     private EditText mNameAccountEditText;
 
     private EditText mSubUseEditText;
 
     public static KeyPair pair;
 
+    public static String privateKey;
+
+    static String fundsSuccessString;
+
+    static String showBalanceString;
 
 
     private boolean mAccountHasChanged = false;
@@ -69,6 +82,8 @@ public class AccountEditorActivity extends AppCompatActivity implements
         // Examine the intent that was used to launch this activity
         final Button addKeypairs = findViewById(R.id.addKeyPairs);
         final Button addFunds = findViewById(R.id.addFunds);
+        fundsSuccessTextView = findViewById(R.id.fundsSucces);
+        showBalanceTextView = findViewById(R.id.showBalance);
         Intent intent = getIntent();
         mCurrentAccountUri = intent.getData();
         // If the intent DOES NOT contain a account content URI, then we know that we are
@@ -83,7 +98,9 @@ public class AccountEditorActivity extends AppCompatActivity implements
             addKeypairs.setVisibility(View.INVISIBLE);
             addFunds.setVisibility(View.INVISIBLE);
             getLoaderManager().initLoader(EXISING_ACCOUNT_LOADER, null, this);
+
         }
+
 
         mNameAccountEditText = findViewById(R.id.accountName);
         mSubUseEditText = findViewById(R.id.useCase);
@@ -109,8 +126,11 @@ public class AccountEditorActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 new AccountAsync().execute();
+                fundsSuccessTextView.setText(fundsSuccessString);
+                showBalanceTextView.setText(showBalanceString);
             }
         });
+
     }
 
     private void saveAccount() {
@@ -264,6 +284,7 @@ public class AccountEditorActivity extends AppCompatActivity implements
             int nameColumnIndex = cursor.getColumnIndex(AccountEntry.COLUMN_ACCOUNT_NAME);
             int useCaseColumnIndex = cursor.getColumnIndex(AccountEntry.COLUMN_ACCOUNT_SUBUSE);
 
+            privateKey = cursor.getString(publicColumnIndex);
             String publicKey = cursor.getString(publicColumnIndex);
             String secretKey = cursor.getString(secretColumnIndex);
             String nameAccount = cursor.getString(nameColumnIndex);
@@ -273,6 +294,18 @@ public class AccountEditorActivity extends AppCompatActivity implements
             mSecretKeyEditText.setText(secretKey);
             mNameAccountEditText.setText(nameAccount);
             mSubUseEditText.setText(useCase);
+
+            new AccountBalanceAsync().execute();
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // Do something after 5s = 5000ms
+                    showBalanceTextView.setText(showBalanceString);
+                }
+            }, 2000);
+
+
         }
     }
 

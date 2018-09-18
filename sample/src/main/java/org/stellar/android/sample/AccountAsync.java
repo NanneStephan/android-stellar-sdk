@@ -1,5 +1,6 @@
 package org.stellar.android.sample;
 
+
 import android.os.AsyncTask;
 import org.stellar.sdk.Server;
 import org.stellar.sdk.responses.AccountResponse;
@@ -31,6 +32,7 @@ public class AccountAsync extends AsyncTask{
         String body = new Scanner(response, "UTF-8").useDelimiter("\\A").next();
         System.out.println("SUCCESS! You have a new account :)\n" + body);
 
+
         Server server = new Server("https://horizon-testnet.stellar.org");
         AccountResponse account = null;
         try {
@@ -40,7 +42,7 @@ public class AccountAsync extends AsyncTask{
         }
         System.out.println("Balances for account " + pair.getAccountId());
         for (AccountResponse.Balance balance : account.getBalances()) {
-            System.out.println(String.format(
+            showBalanceString = (String.format(
                     "Type: %s, Code: %s, Balance: %s",
                     balance.getAssetType(),
                     balance.getAssetCode(),

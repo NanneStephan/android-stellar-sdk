@@ -16,9 +16,9 @@
 
         <!-- Label -->
         <TextView
-            android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="Keys"
             android:textColor="@color/colorAccent" />
 
@@ -32,62 +32,78 @@
 
             <!-- Name field -->
             <TextView
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
                 android:id="@+id/PrivateKey"
                 style="@style/EditorFieldStyle"
-                android:textSize="15sp"
+                android:layout_weight="1"
                 android:drawableTop="@drawable/pk"
+                android:gravity="center_horizontal"
+                android:textSize="15sp"
                 tools:text="GCKSI5OJ5N5M4WQBRWJAFAJQSCOZF45U4GX6MO4K4I42SJTXDVP7QRRO" />
 
             <!-- Breed field -->
             <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="1"
                 android:id="@+id/secretKey"
                 style="@style/EditorFieldStyle"
-                android:textSize="15sp"
+                android:layout_weight="1"
                 android:drawableTop="@drawable/sk"
+                android:gravity="center_horizontal"
+                android:textSize="15sp"
                 tools:text="SC6C5ZKYZ6VVVEK3YWXMUSKN6AITCT62GFDJ4IW2FYMLCN5ADT4JYI64" />
         </LinearLayout>
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:drawableTop="@drawable/balance"
+            android:id="@+id/showBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            tools:text="" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <Button
+                android:id="@+id/addKeyPairs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:padding="10dp"
+                android:text="Genereate KeyPair"
+                android:textAllCaps="false"
+                android:textColor="@color/backgroundOffWhite" />
+
+            <Button
+                android:id="@+id/addFunds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:padding="10dp"
+                android:text="Add Funds"
+                android:textAllCaps="false"
+                android:textColor="@color/backgroundOffWhite" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-    <Button
         android:layout_weight="1"
-        android:id="@+id/addKeyPairs"
-        android:layout_marginBottom="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:text="Genereate KeyPair"
-        android:textAllCaps="false"
-        android:padding="10dp"
-        android:textColor="@color/backgroundOffWhite"
-        android:layout_gravity="center"
-        />
-    <Button
-        android:layout_weight="1"
-        android:id="@+id/addFunds"
-        android:layout_marginBottom="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:text="Add Funds"
-        android:textAllCaps="false"
-        android:padding="10dp"
-        android:textColor="@color/backgroundOffWhite"
-        android:layout_gravity="center"
-        />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -145,14 +161,10 @@
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
+
     <TextView
         android:id="@+id/fundsSucces"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text=""/>
-    <TextView
-        android:id="@+id/showBalance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text=""/>
+        tools:text="" />
 </LinearLayout>

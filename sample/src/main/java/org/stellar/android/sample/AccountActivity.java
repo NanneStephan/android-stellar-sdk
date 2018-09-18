@@ -17,8 +17,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.stellar.android.sample.data.AccountContract.*;
+
+import static org.stellar.android.sample.AccountEditorActivity.*;
 
 
 public class AccountActivity extends AppCompatActivity implements
@@ -28,10 +31,13 @@ public class AccountActivity extends AppCompatActivity implements
 
     AccountCursorAdapter mCursorAdapter;
 
+    TextView balanceTextView;
+
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.list_acounts);
+        balanceTextView = findViewById(R.id.balanceList);
 
         // Setup FAB to open EditorActivity
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -152,6 +158,7 @@ public class AccountActivity extends AppCompatActivity implements
                 null,// No selection clause
                 null,// No selection arguments
                 null);// Default sort order
+
         }
 
     @Override
