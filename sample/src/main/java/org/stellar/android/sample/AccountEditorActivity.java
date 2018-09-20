@@ -2,22 +2,19 @@ package org.stellar.android.sample;
 
 import android.app.AlertDialog;
 import android.app.LoaderManager;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
-import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -38,7 +35,7 @@ public class AccountEditorActivity extends AppCompatActivity implements
     /**
      * Identifier for the account data loader
      */
-    private static final int EXISING_ACCOUNT_LOADER = 0;
+    static final int EXISTING_ACCOUNT_LOADER = 0;
 
     private Uri mCurrentAccountUri;
 
@@ -62,6 +59,8 @@ public class AccountEditorActivity extends AppCompatActivity implements
     static String fundsSuccessString;
 
     static String showBalanceString;
+
+    static Uri accountUri;
 
 
     private boolean mAccountHasChanged = false;
@@ -97,7 +96,7 @@ public class AccountEditorActivity extends AppCompatActivity implements
             setTitle("Edit Account");
             addKeypairs.setVisibility(View.INVISIBLE);
             addFunds.setVisibility(View.INVISIBLE);
-            getLoaderManager().initLoader(EXISING_ACCOUNT_LOADER, null, this);
+            getLoaderManager().initLoader(EXISTING_ACCOUNT_LOADER, null, this);
 
         }
 
@@ -131,6 +130,19 @@ public class AccountEditorActivity extends AppCompatActivity implements
             }
         });
 
+        Button sendActivity = findViewById(R.id.sendFundButton);
+        sendActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(AccountEditorActivity.this,
+                        SendPaymentActivity.class);
+                intent.setData(mCurrentAccountUri);
+                startActivity(intent);
+
+
+            }
+        });
     }
 
     private void saveAccount() {

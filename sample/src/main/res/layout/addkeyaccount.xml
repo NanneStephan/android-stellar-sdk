@@ -167,4 +167,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="" />
+
+    <Button
+        android:layout_alignParentRight="true"
+        android:id="@+id/sendFundButton"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:background="@color/colorAccent"
+        android:text="send "
+        android:textAllCaps="false"
+        android:textColor="@color/backgroundOffWhite" />
 </LinearLayout>

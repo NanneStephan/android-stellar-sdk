@@ -25,6 +25,8 @@
         <activity
             android:name=".MainActivity"
             android:parentActivityName=".AccountActivity"/>
+        <activity android:name=".SendPaymentActivity"
+            android:parentActivityName=".AccountActivity"/>
         <provider
             android:authorities="org.stellar.android.sample"
             android:name=".data.AccountProvider"

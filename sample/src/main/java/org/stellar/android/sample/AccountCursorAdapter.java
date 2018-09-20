@@ -16,12 +16,14 @@ import org.stellar.android.sample.data.AccountContract.*;
  * that uses a {@link Cursor} of pet data as its data source. This adapter knows
  * how to create list items for each row of pet data in the {@link Cursor}.
  */
-import static org.stellar.android.sample.AccountEditorActivity.*;
+
 
 public class AccountCursorAdapter extends CursorAdapter {
+    private Context mContext;
 
     public AccountCursorAdapter(Context context, Cursor cursor){
         super(context, cursor, 0);
+        this.mContext = context;
     }
 
     @Override
@@ -31,11 +33,10 @@ public class AccountCursorAdapter extends CursorAdapter {
     }
 
     @Override
-    public void bindView(View view, Context context,Cursor cursor){
+    public void bindView(View view, final Context context, Cursor cursor){
 
         TextView nameTextView = view.findViewById(R.id.name);
         TextView summaryTextView = view.findViewById(R.id.summary);
-
 
         int nameColumnIndex = cursor.getColumnIndex(AccountEntry.COLUMN_ACCOUNT_NAME);
         int subUseColumnIndex = cursor.getColumnIndex(AccountEntry.COLUMN_ACCOUNT_SUBUSE);

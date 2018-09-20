@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".AccountEditorActivity">
+
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:sothree="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sliding_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        sothree:umanoDragView="@+id/dragView"
+        sothree:umanoOverlay="true"
+        sothree:umanoPanelHeight="68dp"
+        sothree:umanoParalaxOffset="100dp"
+        sothree:umanoShadowHeight="4dp">
+        <!-- Overview category -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:paddingLeft="4dp">
+
+                <!-- Name field -->
+                <TextView
+                    android:id="@+id/PrivateKeySender"
+                    style="@style/EditorFieldStyle"
+                    android:drawableTop="@drawable/pk"
+                    android:gravity="center_horizontal"
+                    android:textSize="15sp"
+                    tools:text="GCKSI5OJ5N5M4WQBRWJAFAJQSCOZF45U4GX6MO4K4I42SJTXDVP7QRRO" />
+
+                <!-- Breed field -->
+                <TextView
+                    android:id="@+id/accountName"
+                    style="@style/EditorFieldStyle"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/sk"
+                    android:gravity="center_horizontal"
+                    android:textSize="15sp"
+                    tools:text="Account Name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/showBalance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/balance"
+                android:gravity="center"
+                tools:text="0000.0000" />
+
+
+            <Button
+                android:id="@+id/addReceiver"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:padding="10dp"
+                android:text="get Account"
+                android:textAllCaps="false"
+                android:textColor="@color/backgroundOffWhite" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+            <!-- Measurement category -->
+            <LinearLayout
+                android:id="@+id/container_measurement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <!-- Label -->
+                <TextView
+                    style="@style/CategoryStyle"
+                    android:text="Receiver" />
+
+                <!-- Input fields -->
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:paddingLeft="4dp">
+
+                    <!-- Weight field -->
+                    <EditText
+                        android:id="@+id/receiver"
+                        style="@style/EditorFieldStyle"
+                        android:hint="Public key"
+                        android:inputType="text" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                android:focusable="false"
+                android:text="content"
+                android:textColor="@android:color/holo_blue_dark"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_show"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:text="show"
+                android:visibility="gone" />
+
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
+            android:padding="10dp"
+            android:text="Send"
+            android:textAllCaps="false"
+            android:textColor="@color/backgroundOffWhite" />
+
+        <TextView
+            android:id="@+id/fundsSuccess"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            tools:text="test" />
+        </LinearLayout>
+        <!-- SLIDING LAYOUT -->
+        <LinearLayout
+            android:id="@+id/dragView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:clickable="true"
+            android:focusable="false"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="List of accounts"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btn_hide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|right"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="hide"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFCCCC">
+
+                <ListView
+                    android:id="@+id/listSlide"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:focusable="true"/>
+            </LinearLayout>
+        </LinearLayout>
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+</RelativeLayout>

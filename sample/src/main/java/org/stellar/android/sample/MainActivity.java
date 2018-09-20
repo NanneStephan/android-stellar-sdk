@@ -25,9 +25,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        successTextView = findViewById(R.id.Success);
-        balanceTextView = findViewById(R.id.Balance);
         server = new Server("https://horizon-testnet.stellar.org");
 
         //pair keys

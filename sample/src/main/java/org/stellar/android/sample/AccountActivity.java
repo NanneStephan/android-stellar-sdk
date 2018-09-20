@@ -17,27 +17,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import org.stellar.android.sample.data.AccountContract.*;
 
 import static org.stellar.android.sample.AccountEditorActivity.*;
-
 
 public class AccountActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor>{
 
     private static final int ACCOUNT_LOADER = 0;
 
-    AccountCursorAdapter mCursorAdapter;
+  static  AccountCursorAdapter mCursorAdapter;
 
-    TextView balanceTextView;
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.list_acounts);
-        balanceTextView = findViewById(R.id.balanceList);
 
         // Setup FAB to open EditorActivity
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -51,6 +47,7 @@ public class AccountActivity extends AppCompatActivity implements
         });
 
         ListView accountListView = findViewById(R.id.list);
+
 
         View emptyView = findViewById(R.id.empty_view);
         accountListView.setEmptyView(emptyView);
@@ -66,9 +63,9 @@ public class AccountActivity extends AppCompatActivity implements
                         AccountEditorActivity.class);
 
                 Uri currentAccountUri = ContentUris.withAppendedId(AccountEntry.CONTENT_URI, id);
-
+                accountUri = currentAccountUri;
                 intent.setData(currentAccountUri);
-
+ 
                 startActivity(intent);
             }
         });
